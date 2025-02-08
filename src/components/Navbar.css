@@ -1,0 +1,16 @@
+.nav-style{
+    background: var(--mainBlue)!important;
+}
+
+.navbar-brand{
+    width: 2rem;
+}
+
+.nav-link{
+    color:var(--mainWhite)!important;
+    font-size: 1.3rem!important;
+}
+
+.nav-items-style{
+    width: 25%;
+}
