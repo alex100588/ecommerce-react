@@ -1,73 +1,29 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { NavLink } from "react-router";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import CardProps from "./CardProps";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:3002/storeProducts");
+      //   console.log(response.data);
+      setProducts(response.data);
+      try {
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <Container>
-      <Row>
-        <Col xs={12} md={6} lg={4}>
-          <Card style={{ width: "15rem" }} className="mb-2">
-            <Card.Img
-              variant="top"
-              className="imageStyle"
-              src="img/product-1.png"
-            />
-            <Card.Body>
-              <Card.Title>{}</Card.Title>
-              <Card.Text>{}</Card.Text>
-              <Button variant="primary">
-                <NavLink to={`product/1`} className="nav-link">
-                  See more
-                </NavLink>
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <br />
-      <Row>
-        <Col xs={12} md={6} lg={4}>
-          <Card style={{ width: "15rem" }} className="mb-2">
-            <Card.Img
-              variant="top"
-              className="imageStyle"
-              src="img/product-1.png"
-            />
-            <Card.Body>
-              <Card.Title>{}</Card.Title>
-              <Card.Text>{}</Card.Text>
-              <Button variant="primary">
-                <NavLink to={`product/1`} className="nav-link">
-                  See more
-                </NavLink>
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <br />
-      <Row>
-        <Col xs={12} md={6} lg={4}>
-          <Card style={{ width: "15rem" }} className="mb-2">
-            <Card.Img
-              variant="top"
-              className="imageStyle"
-              src="img/product-1.png"
-            />
-            <Card.Body>
-              <Card.Title>{}</Card.Title>
-              <Card.Text>{}</Card.Text>
-              <Button variant="primary">
-                <NavLink to={`product/1`} className="nav-link">
-                  See more
-                </NavLink>
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <br />
-      
+      {products.map((product) => (
+        <CardProps id={product.id} title={product.title} test="test" />
+      ))}
     </Container>
   );
 };
