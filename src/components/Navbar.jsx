@@ -3,39 +3,52 @@ import logo from "../logo.png";
 import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
 
+const showlist = ()=>{
+  const li = document.querySelectorAll('li')
+  li.forEach(i => i.classList.toggle('show-lists-small'))
+  // console.log(li);
+}
+
 const Navbar = () => {
   return (
-    <Nav className="navbar navbar-expand-sm  navbar-dark px-sm-5 nav-style d-flex justify-content-between">
+    <Nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 px-sm-5 d-flex justify-content-between">
+      
       <div className="d-flex justify-content-between w-100">
         <Link to="/">
           <img src={logo} alt="store" className="navbar-brand" />
         </Link>
         <div className="nav-items-style d-flex justify-content-between">
-          <InputGroup className="input-style">
-            <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+          <InputGroup className="form-input">
             <Form.Control
-              placeholder="Search"
+              placeholder="Search product"
               aria-label="Username"
-              aria-describedby="basic-addon1"
             />
           </InputGroup>
         </div>
         <div className="d-flex justify-content-between w-25">
           <ul className="navbar-nav align-items-center">
-            <li className="nav-item ml-5">
+        <Button onClick={showlist} className="d-lg-none">toggle</Button>
+            <li className="nav-item ml-5 d-none d-lg-block ">
               <Link to="/" className="nav-link">
-                Products
+                Phones
+              </Link>
+            </li>
+            <li className="nav-item ml-5 d-none d-lg-block">
+              <Link to="/" className="nav-link">
+                Pets
+              </Link>
+            </li>
+            <li className="nav-item ml-5 d-none d-lg-block">
+              <Link to="/" className="nav-link">
+                Games
+              </Link>
+            </li>
+            <li>
+              <Link to="/cart" className="ml-auto">
+                <Button className="button-container">cart</Button>
               </Link>
             </li>
           </ul>
-          <Link to="/cart" className="ml-auto">
-            <Button className="button-container">
-              <span className="mr-2">
-                <i className="fas fa-cart-plus " />
-              </span>
-              cart
-            </Button>
-          </Link>
         </div>
       </div>
     </Nav>

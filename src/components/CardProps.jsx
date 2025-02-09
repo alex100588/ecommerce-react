@@ -1,13 +1,14 @@
+
 import { Button, Card, Col, NavLink, Row } from "react-bootstrap";
 
-const CardProps = ({ id, title,company }) => {
-    return <Row key={id}>
-    <Col xs={12} md={6} lg={4}>
-      <Card style={{ width: "15rem" }} className="mb-2">
+const CardProps = ({ title, company,img }) => {
+  return (
+    
+      <Card className="mb-3">
         <Card.Img
           variant="top"
           className="imageStyle"
-          src="img/product-1.png"
+          src={`${process.env.PUBLIC_URL}/${img}`}
         />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
@@ -19,8 +20,7 @@ const CardProps = ({ id, title,company }) => {
           </Button>
         </Card.Body>
       </Card>
-    </Col>
-  </Row>;
+  );
 };
 
 export default CardProps;

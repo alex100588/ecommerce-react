@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Fragment, useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import CardProps from "./CardProps";
 
 const Products = () => {
@@ -20,10 +20,14 @@ const Products = () => {
   }, []);
 
   return (
-    <Container>
+    <Container >
+        <Row>
       {products.map((product) => (
-        <CardProps id={product.id} title={product.title} img={product.img} price={product.price} company={product.company}/>
+        <Col key={product.id} xs={12} md={6} lg={3}>
+            <CardProps title={product.title} img={product.img} price={product.price} company={product.company}/>
+        </Col>
       ))}
+        </Row>
     </Container>
   );
 };

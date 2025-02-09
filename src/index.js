@@ -2,14 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./index.css";
-import App from "./App";
 import ErrorPage from "./components/ErrorPage";
 import SingleProduct from "./components/SingleProduct";
 import Products from "./components/Products";
+import App from "./App";
+import "./index.css";
 
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const router = createBrowserRouter([
   {
@@ -28,6 +27,8 @@ const router = createBrowserRouter([
     ]
   },
 ]);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
