@@ -1,6 +1,8 @@
 import { Card } from "react-bootstrap";
+import { useParams } from "react-router";
 
 const SingleProduct = () => {
+  const params = useParams()
   return (
     <Card>
       <Card.Img

@@ -1,5 +1,5 @@
 
-import { Button, Card, Col, NavLink, Row } from "react-bootstrap";
+import { Button, Card, NavLink, Row } from "react-bootstrap";
 
 const CardProps = ({ title, company,img }) => {
   return (
