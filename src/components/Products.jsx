@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import CardProps from "./CardProps";
+import { Fragment, useEffect, useState } from "react";
+import { Card, Col, Container, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -9,32 +10,55 @@ const Products = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-      const response = await axios.get("http://localhost:3002/storeProducts");
-      //   console.log(response.data);
-      setProducts(response.data);
-      
+        const response = await axios.get("http://localhost:3002/phones");
+        //   console.log(response.data);
+        setProducts(response.data);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchData();
   }, []);
 
-  return (
-    <Container>
-      <Row>
-        {products.map((product) => (
-          <Col key={product.id} xs={12} md={6} lg={3}>
-            <CardProps
-              title={product.title}
-              img={product.img}
-              price={product.price}
-              company={product.company}
+  const buildPhones = () => {
+    return products.map(({ id, title, img, price, company }) => (
+      <Fragment key={id}>
+        <Col xs={12} md={6} lg={3}>
+          <Card className="mb-2">
+            <Card.Img
+              variant="top"
+              className="imageStyle"
+              src={`${process.env.PUBLIC_URL}/${img}`}
             />
-          </Col>
-        ))}
-      </Row>
-    </Container>
+            <Card.Body>
+              <Card.Title>{title}</Card.Title>
+              <Card.Text>Price: {price} $</Card.Text>
+              <Card.Text>Company: {company}</Card.Text>
+              <Button variant="primary btn-sm me-2">
+                <NavLink to={`/phones/${id}`} className="nav-link">
+                  See more
+                </NavLink>
+              </Button>
+              <Button variant="primary btn-sm">
+                <NavLink to="" className="nav-link ">
+                  Add to cart
+                  <i className=" bi bi-cart ms-1"></i>
+                </NavLink>
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <br />
+      </Fragment>
+    ));
+  };
+
+  return (
+    <>
+      <Container>
+        <Row>{buildPhones()}</Row>
+      </Container>
+    </>
   );
 };
 

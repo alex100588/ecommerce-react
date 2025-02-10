@@ -1,6 +1,6 @@
 .navbar {
   padding-right: 2.4rem;
-  padding-left: 7rem;
+  padding-left: 3rem;
 }
 .nav-style {
   background: var(--mainBlue) !important;
@@ -12,7 +12,6 @@
 
 .nav-link {
   color: white;
-  font-size: 1.3rem !important;
 }
 
 .nav-items-style {
@@ -34,12 +33,6 @@
   font-size: 2rem;
 }
 
-@media screen and (max-width: 1400px) {
-  .navbar {
-    padding-right: 6rem;
-    padding-left: 2rem;
-  }
-}
 @media screen and (max-width: 1000px) {
   .navbar {
     padding-right: 3rem;

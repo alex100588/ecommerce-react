@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from "../logo.png";
 import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
 
