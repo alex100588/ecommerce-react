@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ErrorPage from "./components/ErrorPage";
 import SingleProduct from "./components/SingleProduct";
 import Products from "./components/Products";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import App from "./App";
 import "./index.css";
 

@@ -1,3 +1,7 @@
+.navbar{
+    padding-right: 2.4rem;
+        padding-left: 7rem;
+}
 .nav-style{
     background: var(--mainBlue)!important;
 }
@@ -14,9 +18,71 @@
 .nav-items-style{
     width: 25%;
 }
+.navbar-nav{
+    flex-direction: row!important;
+}
+
+.form-input{
+    max-height: 2.5rem;
+}
 
 .show-lists-small{
     display: block!important;
 }
+
+.icon-style{
+    font-size: 2rem;
+}
+
+
+
+@media screen and (max-width: 1400px) {
+    .navbar{
+        padding-right: 6rem;
+            padding-left: 2rem;
+    }
+   
+}
+@media screen and (max-width: 1000px) {
+    .navbar{
+        padding-right: 3rem;
+            padding-left: 2.7rem;
+    }
+    .navbar-expand-sm .navbar-nav {
+        flex-direction: column!important;
+    }
+
+    .w-100 {
+        width: 98% !important;
+    }
+    .align-items-center{
+        margin-left: 7rem!important;
+    }
+   
+}
 @media screen and (max-width: 600px) {
-  }
+    .navbar{
+        padding-right: 0;
+            padding-left: 0;
+    }
+    .nav-items-style{
+        width: 51%;
+    }
+    .w-100 {
+        margin-left: 1.1rem;
+        width: 82% !important;
+    }
+    .w-25 {
+        width: 12% !important;
+    }
+    .navbar-expand-sm .navbar-nav {
+        flex-direction: column!important;
+    }
+    .nav-items-style {
+        width: 60%;
+    }
+    .align-items-center{
+        margin-left: 0!important;
+    }
+}
+
