@@ -12,6 +12,10 @@
 
 .nav-link {
   color: white;
+  transition: 0.1s ease;
+}
+.nav-link:hover {
+  border-bottom: 1.2px solid blue;
 }
 
 .nav-items-style {

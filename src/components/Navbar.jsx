@@ -42,7 +42,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item ml-5 d-none d-lg-block">
               <Link to="/cart" className="ml-auto">
-                <Button className="button-container btn-sm">cart
+                <Button className="button-container btn-sm ms-1">Cart
                 <i className="bi bi-cart ms-1"></i>
                 </Button>
               </Link>

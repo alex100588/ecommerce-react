@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ErrorPage from "./components/ErrorPage";
-import SingleProduct from "./components/SinglePetProduct";
 import Pets from "./components/Pets";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import App from "./App";
@@ -12,6 +11,7 @@ import Accessories from "./components/Accessories";
 import SingleAccessoriesProduct from "./components/SingleAccessoriesProduct";
 import Food from "./components/Food";
 import Cart from "./components/Cart";
+import SinglePetProduct from "./components/SinglePetProduct";
 
 const router = createBrowserRouter([
   {
@@ -28,15 +28,15 @@ const router = createBrowserRouter([
         element: <Pets />,
       },
       {
-        path: "pets/:Id",
-        element: <SingleProduct />,
+        path: "pets/:petsId",
+        element: <SinglePetProduct />,
       },
       {
         path: "/accessories",
         element: <Accessories />,
       },
       {
-        path: "accessories/:Id",
+        path: "accessories/accessories:Id",
         element: <SingleAccessoriesProduct />,
       },
       {
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <Food />,
       },
       {
-        path: "food/:Id",
+        path: "food/:foodId",
         element: <SingleAccessoriesProduct />,
       },
       {

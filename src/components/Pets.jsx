@@ -5,23 +5,25 @@ import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const Pets = () => {
-  const [products, setProducts] = useState([]);
+  const [pets, setPets] = useState([]);
+  const [hasError, setError] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:3002/pets");
-        //   console.log(response.data);
-        setProducts(response.data);
+          console.log(response.data);
+        setPets(response.data);
       } catch (error) {
         console.log(error);
+        setError(true)
       }
     };
     fetchData();
   }, []);
 
-  const buildPhones = () => {
-    return products.map(({ id, title, img, price, family }) => (
+  const buildPets = () => {
+    return pets.map(({ id, title, img, price, family }) => (
       <Fragment key={id}>
         <Col xs={12} md={6} lg={3}>
           <Card className="mb-2">
@@ -56,7 +58,10 @@ const Pets = () => {
   return (
     <>
       <Container>
-        <Row>{buildPhones()}</Row>
+        
+        <Row>
+         {hasError ? <h1 className="text-center text-white">Store closed</h1> : buildPets()}
+        </Row>
       </Container>
     </>
   );
