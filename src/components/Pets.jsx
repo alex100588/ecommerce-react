@@ -4,13 +4,13 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-const Products = () => {
+const Pets = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3002/phones");
+        const response = await axios.get("http://localhost:3002/pets");
         //   console.log(response.data);
         setProducts(response.data);
       } catch (error) {
@@ -21,25 +21,25 @@ const Products = () => {
   }, []);
 
   const buildPhones = () => {
-    return products.map(({ id, title, img, price, company }) => (
+    return products.map(({ id, title, img, price, family }) => (
       <Fragment key={id}>
         <Col xs={12} md={6} lg={3}>
           <Card className="mb-2">
             <Card.Img
               variant="top"
-              className="imageStyle"
+              className="image-style"
               src={`${process.env.PUBLIC_URL}/${img}`}
             />
             <Card.Body>
-              <Card.Title>{title}</Card.Title>
-              <Card.Text>Price: {price} $</Card.Text>
-              <Card.Text>Company: {company}</Card.Text>
+              <Card.Title className="h5">{title}</Card.Title>
+              <Card.Text className="h6">Price: {price} $</Card.Text>
+              <Card.Text className="h6">Family: {family}</Card.Text>
               <Button variant="primary btn-sm me-2">
-                <NavLink to={`/phones/${id}`} className="nav-link">
+                <NavLink to={`/pets/${id}`} className="nav-link">
                   See more
                 </NavLink>
               </Button>
-              <Button variant="primary btn-sm">
+              <Button variant="success btn-sm">
                 <NavLink to="" className="nav-link ">
                   Add to cart
                   <i className=" bi bi-cart ms-1"></i>
@@ -62,4 +62,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Pets;

@@ -26,23 +26,25 @@ const Navbar = () => {
               toggle
             </Button>
             <li className="nav-item ml-5 d-none d-lg-block ">
-              <Link to="/" className="nav-link">
-                Phones
-              </Link>
-            </li>
-            <li className="nav-item ml-5 d-none d-lg-block">
-              <Link to="/" className="nav-link">
+              <Link to="/pets" className="nav-link">
                 Pets
               </Link>
             </li>
             <li className="nav-item ml-5 d-none d-lg-block">
-              <Link to="/" className="nav-link">
-                Games
+              <Link to="/accessories" className="nav-link">
+              Accessories
+              </Link>
+            </li>
+            <li className="nav-item ml-5 d-none d-lg-block">
+              <Link to="/food" className="nav-link">
+                Food
               </Link>
             </li>
             <li className="nav-item ml-5 d-none d-lg-block">
               <Link to="/cart" className="ml-auto">
-                <Button className="button-container">cart</Button>
+                <Button className="button-container btn-sm">cart
+                <i className="bi bi-cart ms-1"></i>
+                </Button>
               </Link>
             </li>
           </ul>
