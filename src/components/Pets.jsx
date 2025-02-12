@@ -1,18 +1,21 @@
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const Pets = () => {
   const [pets, setPets] = useState([]);
   const [hasError, setError] = useState(false)
+  const [total, setTotal] = useState(0)
+  
+  console.log(total);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:3002/pets");
-          console.log(response.data);
+          // console.log(response.data);
         setPets(response.data);
       } catch (error) {
         console.log(error);
@@ -22,6 +25,16 @@ const Pets = () => {
     fetchData();
   }, []);
 
+  if (pets === null) {
+    return <Spinner animation="grow" variant="primary" />;
+  }
+  const totalPrice = (e)=>{
+    console.log(pets.map(i => i.price))
+    // console.log(e);
+    
+    
+  }
+  
   const buildPets = () => {
     return pets.map(({ id, title, img, price, family }) => (
       <Fragment key={id}>
@@ -34,14 +47,14 @@ const Pets = () => {
             />
             <Card.Body>
               <Card.Title className="h5">{title}</Card.Title>
-              <Card.Text className="h6">Price: {price} $</Card.Text>
+              <Card.Text className="h6">Price: {price}$</Card.Text>
               <Card.Text className="h6">Family: {family}</Card.Text>
               <Button variant="primary btn-sm me-2">
                 <NavLink to={`/pets/${id}`} className="nav-link">
                   See more
                 </NavLink>
               </Button>
-              <Button variant="success btn-sm">
+              <Button onClick={e=>totalPrice(e)} variant="success btn-sm">
                 <NavLink to="" className="nav-link ">
                   Add to cart
                   <i className=" bi bi-cart ms-1"></i>

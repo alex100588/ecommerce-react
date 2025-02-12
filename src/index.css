@@ -17,3 +17,6 @@ code {
   background-image: url('./images/water.jpg');
   background-size: cover;
 }
+.align-images{
+  margin: 0 auto;
+}
