@@ -12,6 +12,7 @@ import SingleAccessoriesProduct from "./components/SingleAccessoriesProduct";
 import Food from "./components/Food";
 import Cart from "./components/Cart";
 import SinglePetProduct from "./components/SinglePetProduct";
+import SigleFoodProduct from "./components/SingleFoodProduct";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
         element: <Accessories />,
       },
       {
-        path: "accessories/accessories:Id",
+        path: "accessories/:accessoriesId",
         element: <SingleAccessoriesProduct />,
       },
       {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "food/:foodId",
-        element: <SingleAccessoriesProduct />,
+        element: <SigleFoodProduct />,
       },
       {
         path: "/cart",

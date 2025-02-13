@@ -9,7 +9,7 @@ const Pets = () => {
   const [hasError, setError] = useState(false)
   const [total, setTotal] = useState(0)
   
-  console.log(total);
+  // console.log(total);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,14 +28,14 @@ const Pets = () => {
   if (pets === null) {
     return <Spinner animation="grow" variant="primary" />;
   }
-  const totalPrice = (e)=>{
-    console.log(pets.map(i => i.price))
-    // console.log(e);
-    
-    
-  }
   
-  const buildPets = () => {
+  const buildPets = (currentElemet) => {
+    const totalPrice = ()=>{
+      console.log(pets.map(i => i.price))
+      console.log(currentElemet);
+      
+      
+    }
     return pets.map(({ id, title, img, price, family }) => (
       <Fragment key={id}>
         <Col xs={12} md={6} lg={3}>
@@ -54,7 +54,7 @@ const Pets = () => {
                   See more
                 </NavLink>
               </Button>
-              <Button onClick={e=>totalPrice(e)} variant="success btn-sm">
+              <Button onClick={()=>totalPrice(currentElemet)} variant="success btn-sm">
                 <NavLink to="" className="nav-link ">
                   Add to cart
                   <i className=" bi bi-cart ms-1"></i>

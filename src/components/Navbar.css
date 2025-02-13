@@ -33,6 +33,10 @@
   font-size: 2rem;
 }
 
+.d-lg-none{
+  width: 5.3rem;
+}
+
 @media screen and (max-width: 1000px) {
   .navbar {
     padding-right: 3rem;

@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="d-flex justify-content-between w-25">
           <ul className="navbar-nav align-items-center">
             <Button onClick={showlist} className="d-lg-none">
-              toggle
+              <i class="bi bi-list ms-1"></i>
             </Button>
             <li className="nav-item ml-5 d-none d-lg-block ">
               <Link to="/pets" className="nav-link">
@@ -32,7 +32,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item ml-5 d-none d-lg-block">
               <Link to="/accessories" className="nav-link">
-              Accessories
+                Accessories
               </Link>
             </li>
             <li className="nav-item ml-5 d-none d-lg-block">
@@ -42,8 +42,9 @@ const Navbar = () => {
             </li>
             <li className="nav-item ml-5 d-none d-lg-block">
               <Link to="/cart" className="ml-auto">
-                <Button className="button-container btn-sm ms-1">Cart
-                <i className="bi bi-cart ms-1"></i>
+                <Button className="button-container btn-sm ms-1">
+                  Cart
+                  <i className="bi bi-cart ms-1"></i>
                 </Button>
               </Link>
             </li>
