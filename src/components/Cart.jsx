@@ -1,13 +1,28 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { Container } from "react-bootstrap";
 
 const Cart = () => {
     const{ petsToCart } = useContext(AppContext)
-    console.log(petsToCart);
+
+    const petsObj = ()=>{
+        if(petsToCart.length === 0){
+            console.log("empty");
+            
+        }else{
+            // console.log(petsToCart);
+            petsToCart.map(pet =>{
+                console.log(pet.title);
+                <h1>{pet.title}</h1>
+            } )
+        }
+    }
     
     return ( 
-        <h1>cart</h1>
-     );
+        <Container>
+            {petsObj()}
+        </Container>
+    )
 }
  
 export default Cart;
