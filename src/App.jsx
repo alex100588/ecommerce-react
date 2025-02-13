@@ -2,15 +2,18 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Title from "./components/Title";
 import "./App.css";
+import { AppProvider } from "./context/AppContext";
 
 function App() {
   return (
     <>
-      <div className="bg">
-        <Navbar />
-        <Title />
-        <Outlet />
-      </div>
+      <AppProvider>
+        <div className="bg">
+          <Navbar />
+          <Title />
+          <Outlet />
+        </div>
+      </AppProvider>
     </>
   );
 }

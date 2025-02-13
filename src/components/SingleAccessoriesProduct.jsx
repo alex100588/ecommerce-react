@@ -61,7 +61,7 @@ const SingleAccessoriesProduct = () => {
               <Link to="/" className="ml-auto">
                 <Button className="button-container btn-sm ms-2 bg-danger">
                   Continue shopping
-                  <i class="bi bi-arrow-right-circle ms-1"></i>
+                  <i className="bi bi-arrow-right-circle ms-1"></i>
                 </Button>
               </Link>
             </div>

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 const showlist = () => {
   const li = document.querySelectorAll("li");
@@ -9,6 +11,14 @@ const showlist = () => {
 };
 
 const Navbar = () => {
+  const { petsToCart } = useContext(AppContext);
+  // console.log(petsToCart);
+
+  const totalPrice = petsToCart?.reduce((acc, pet) => {
+    acc += pet.price;
+    return acc;
+  }, 0);
+
   return (
     <Nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 d-flex justify-content-between">
       <div className="d-flex justify-content-between w-100">
@@ -23,7 +33,7 @@ const Navbar = () => {
         <div className="d-flex justify-content-between w-25">
           <ul className="navbar-nav align-items-center">
             <Button onClick={showlist} className="d-lg-none">
-              <i class="bi bi-list ms-1"></i>
+              <i className="bi bi-list ms-1"></i>
             </Button>
             <li className="nav-item ml-5 d-none d-lg-block ">
               <Link to="/pets" className="nav-link">
@@ -43,7 +53,7 @@ const Navbar = () => {
             <li className="nav-item ml-5 d-none d-lg-block">
               <Link to="/cart" className="ml-auto">
                 <Button className="button-container btn-sm ms-1">
-                  Cart
+                  Cart ({totalPrice})
                   <i className="bi bi-cart ms-1"></i>
                 </Button>
               </Link>
