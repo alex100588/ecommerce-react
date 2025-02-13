@@ -7,13 +7,17 @@ const Cart = () => {
 
     const petsObj = ()=>{
         if(petsToCart.length === 0){
-            console.log("empty");
+            return <div className="text-white">
+                <p>no items added</p>
+            </div>
             
         }else{
             // console.log(petsToCart);
-            petsToCart.map(pet =>{
+           return petsToCart.map(pet =>{
                 console.log(pet.title);
-                <h1>{pet.title}</h1>
+                <div key={pet.id} className="text-white">
+                        {pet.title}
+                    </div>
             } )
         }
     }
