@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import axios from "axios";
 
 const showlist = () => {
   const li = document.querySelectorAll("li");
@@ -11,7 +12,8 @@ const showlist = () => {
 };
 
 const Navbar = () => {
-  const { petsToCart } = useContext(AppContext);
+  const { petsToCart, findItem } = useContext(AppContext);
+  const [input, setInput] = useState([])
   // console.log(petsToCart);
 
   const totalPrice = petsToCart?.reduce((acc, pet) => {
@@ -19,11 +21,20 @@ const Navbar = () => {
     return acc;
   }, 0);
 
-  const findItem = (e) => {
-    console.log(e.target.value)
-    console.log(petsToCart);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3002/pets");
+          console.log(response.data);
+          setInput(response.data)
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    }, []);
     
-  };
+  
 
   return (
     <Nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 d-flex justify-content-between">
@@ -33,7 +44,7 @@ const Navbar = () => {
         </Link>
         <div className="nav-items-style d-flex justify-content-between mt-1">
           <InputGroup className="form-input">
-            <Form.Control onChange={(e)=>findItem(e)} placeholder="Search product" aria-label="search" />
+            <Form.Control onChange={(e)=>setInput(e.target.value)} placeholder="Search product" aria-label="search" />
           </InputGroup>
         </div>
         <div className="d-flex justify-content-between w-25">
