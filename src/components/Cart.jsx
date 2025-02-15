@@ -3,7 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { Button, Container, Image } from "react-bootstrap";
 
 const Cart = () => {
-  const { petsToCart } = useContext(AppContext);
+  const { petsToCart, removeFromCart } = useContext(AppContext);
 
   const petsObj = () => {
     if (petsToCart.length === 0) {
@@ -38,7 +38,13 @@ const Cart = () => {
                 <i className="bi bi-plus-circle text-white"></i>
                 <h5 className="text-white ">3</h5>
                 <i className="bi bi-dash-lg text-white"></i>
-                <Button variant="danger" className="btn-sm">Delete</Button>
+                <Button
+                  variant="danger"
+                  className="btn-sm"
+                  onClick={() => removeFromCart(pet.id)}
+                >
+                  Delete
+                </Button>
                 <p className="text-white">Total: 1200$</p>
               </div>
             </div>
