@@ -14,6 +14,7 @@ export const AppProvider = ({ children }) => {
   const removeFromCart = (itemId) => {
     setPetsToCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
+  
 
   return (
     <AppContext.Provider value={{ petsToCart, addToCart, removeFromCart }}>

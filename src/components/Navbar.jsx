@@ -19,6 +19,12 @@ const Navbar = () => {
     return acc;
   }, 0);
 
+  const findItem = (e) => {
+    console.log(e.target.value)
+    console.log(petsToCart);
+    
+  };
+
   return (
     <Nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 d-flex justify-content-between">
       <div className="d-flex justify-content-between w-100">
@@ -27,7 +33,7 @@ const Navbar = () => {
         </Link>
         <div className="nav-items-style d-flex justify-content-between mt-1">
           <InputGroup className="form-input">
-            <Form.Control placeholder="Search product" aria-label="Username" />
+            <Form.Control onChange={(e)=>findItem(e)} placeholder="Search product" aria-label="search" />
           </InputGroup>
         </div>
         <div className="d-flex justify-content-between w-25">

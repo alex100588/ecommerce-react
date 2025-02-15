@@ -1,13 +1,14 @@
 import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { AppContext } from "../context/AppContext";
 
 const Food = () => {
     const [pets, setPets] = useState([]);
     const [hasError, setError] = useState(false)
-    const [total, setTotal] = useState(0)
+    const{ addToCart } = useContext(AppContext)
     
     // console.log(total);
   
@@ -27,6 +28,10 @@ const Food = () => {
   
     if (pets === null) {
       return <Spinner animation="grow" variant="primary" />;
+    }
+
+    const addPetsToCart = (element) =>{
+      addToCart(element)
     }
     
     const buildPets = (currentElemet) => {
@@ -56,7 +61,7 @@ const Food = () => {
                     See more
                   </NavLink>
                 </Button>
-                <Button onClick={()=>totalPrice(currentElemet)} variant="success btn-sm">
+                <Button onClick={()=>addPetsToCart({id, title, img, price, product})} variant="success btn-sm">
                   <NavLink to="" className="nav-link ">
                     Add to cart
                     <i className=" bi bi-cart ms-1"></i>
