@@ -13,6 +13,7 @@ import Food from "./components/Food";
 import Cart from "./components/Cart";
 import SinglePetProduct from "./components/SinglePetProduct";
 import SigleFoodProduct from "./components/SingleFoodProduct";
+import AllProducts from "./components/AllProducts";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Pets />,
+        element: <AllProducts />,
       },
       {
         path: "/pets",

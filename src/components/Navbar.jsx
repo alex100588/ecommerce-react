@@ -3,7 +3,6 @@ import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
-import axios from "axios";
 
 const showlist = () => {
   const li = document.querySelectorAll("li");
@@ -38,7 +37,7 @@ const Navbar = () => {
               <i className="bi bi-list ms-1"></i>
             </Button>
             <li className="nav-item ml-5 d-none d-lg-block ">
-              <Link to="/pets" className="nav-link">
+              <Link to="/" className="nav-link">
                 All products
               </Link>
             </li>

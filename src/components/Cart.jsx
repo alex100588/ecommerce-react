@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { Button, Container, Image } from "react-bootstrap";
 
 const Cart = () => {
   const { petsToCart, removeFromCart } = useContext(AppContext);
+  let [counter, setCounter] = useState(1);
+  let [totalPrice, setTotalPrice] = useState(0)
 
   const petsObj = () => {
     if (petsToCart.length === 0) {
@@ -33,11 +35,16 @@ const Cart = () => {
                 </li>
                 <li className="list-group-item">Price: {pet.price}$</li>
               </ul>
-
               <div className="d-flex justify-content-between">
-                <i className="bi bi-plus-circle text-white"></i>
-                <h5 className="text-white ">3</h5>
-                <i className="bi bi-dash-lg text-white"></i>
+                
+                {/* Counter */}
+                <i
+                  onClick={() => setCounter((counter + 1)) }
+                  className="bi bi-plus-circle text-white"
+                ></i>
+
+                <h5 className="text-white ">{counter}</h5>
+                <i onClick={() => setCounter((counter - 1))} className="bi bi-dash-lg text-white"></i>
                 <Button
                   variant="danger"
                   className="btn-sm"
@@ -45,7 +52,7 @@ const Cart = () => {
                 >
                   Delete
                 </Button>
-                <p className="text-white">Total: 1200$</p>
+                <p className="text-white">{totalPrice ? pet.price : setTotalPrice(totalPrice + pet.price)}</p>
               </div>
             </div>
           </div>
