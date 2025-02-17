@@ -17,15 +17,10 @@ export const AppProvider = ({ children }) => {
     setPetsToCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
 
-  const findItem = (item) => {
-    console.log(item);
-    
-    petsToCart.find(it => it.title === item.target.value)
-    
-  };
+  
 
   return (
-    <AppContext.Provider value={{ petsToCart, addToCart, removeFromCart,findItem }}>
+    <AppContext.Provider value={{ petsToCart, addToCart, removeFromCart }}>
       {children}
     </AppContext.Provider>
   );

@@ -12,28 +12,13 @@ const showlist = () => {
 };
 
 const Navbar = () => {
-  const { petsToCart, findItem } = useContext(AppContext);
-  const [input, setInput] = useState([])
-  // console.log(petsToCart);
+  const { petsToCart } = useContext(AppContext);
 
   const totalPrice = petsToCart?.reduce((acc, pet) => {
     acc += pet.price;
     return acc;
   }, 0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3002/pets");
-          console.log(response.data);
-          setInput(response.data)
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchData();
-    }, []);
-    
   
 
   return (
@@ -44,14 +29,19 @@ const Navbar = () => {
         </Link>
         <div className="nav-items-style d-flex justify-content-between mt-1">
           <InputGroup className="form-input">
-            <Form.Control onChange={(e)=>setInput(e.target.value)} placeholder="Search product" aria-label="search" />
+            <Form.Control placeholder="Search product" aria-label="search" />
           </InputGroup>
         </div>
-        <div className="d-flex justify-content-between w-25">
+        <div className="d-flex justify-content-between">
           <ul className="navbar-nav align-items-center">
             <Button onClick={showlist} className="d-lg-none">
               <i className="bi bi-list ms-1"></i>
             </Button>
+            <li className="nav-item ml-5 d-none d-lg-block ">
+              <Link to="/pets" className="nav-link">
+                All products
+              </Link>
+            </li>
             <li className="nav-item ml-5 d-none d-lg-block ">
               <Link to="/pets" className="nav-link">
                 Pets
