@@ -4,7 +4,8 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [petsToCart, setPetsToCart] = useState([]);
-  console.log(petsToCart);
+  const [search, setSearch] = useState('')  
+  // console.log(petsToCart);            
   
 
   // Pentru a adauga un item in cart
@@ -17,10 +18,13 @@ export const AppProvider = ({ children }) => {
     setPetsToCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
 
+  const handleSearch = (input)=>{
+    setSearch(input)
+  }
   
 
   return (
-    <AppContext.Provider value={{ petsToCart, addToCart, removeFromCart }}>
+    <AppContext.Provider value={{ petsToCart, addToCart, removeFromCart, handleSearch, search }}>
       {children}
     </AppContext.Provider>
   );

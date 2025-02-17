@@ -8,9 +8,9 @@ import { AppContext } from "../context/AppContext";
 const Pets = () => {
   const [pets, setPets] = useState([]);
   const [hasError, setError] = useState(false)
-  const{ addToCart } = useContext(AppContext)
+  const{ addToCart, search } = useContext(AppContext)
   
-  // console.log(total);
+  const filterPetsBySearch = pets.filter(pet => pet.title.includes(search))
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +26,7 @@ const Pets = () => {
     fetchData();
   }, []);
 
-  if (pets === null) {
+  if (filterPetsBySearch === null) {
     return <Spinner animation="grow" variant="primary" />;
   }
 
@@ -36,7 +36,7 @@ const Pets = () => {
   
   const buildPets = () => {
    
-    return pets.map(({ id, title, img, price, family }) => (
+    return filterPetsBySearch.map(({ id, title, img, price, family }) => (
       <Fragment key={id}>
         <Col xs={12} md={6} lg={3}>
           <Card className="mb-2">

@@ -11,14 +11,18 @@ const showlist = () => {
 };
 
 const Navbar = () => {
-  const { petsToCart } = useContext(AppContext);
+  const { petsToCart, search, handleSearch } = useContext(AppContext);
 
   const totalPrice = petsToCart?.reduce((acc, pet) => {
     acc += pet.price;
     return acc;
   }, 0);
 
-  
+  const setInputValue = (e)=>{
+    console.log(search);
+    
+    handleSearch(e.target.value)
+  }
 
   return (
     <Nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 d-flex justify-content-between">
@@ -27,8 +31,8 @@ const Navbar = () => {
           <i className="bi bi-shop text-white icon-style"></i>
         </Link>
         <div className="nav-items-style d-flex justify-content-between mt-1">
-          <InputGroup className="form-input">
-            <Form.Control placeholder="Search product" aria-label="search" />
+          <InputGroup  className="form-input">
+            <Form.Control value={search} onChange={(e)=>{setInputValue(e)}} placeholder="Search product" aria-label="search" />
           </InputGroup>
         </div>
         <div className="d-flex justify-content-between">
@@ -59,7 +63,7 @@ const Navbar = () => {
             <li className="nav-item ml-5 d-none d-lg-block">
               <Link to="/cart" className="ml-auto">
                 <Button className="button-container btn-sm ms-1">
-                  Cart ({totalPrice})
+                  Cart ({totalPrice}$)
                   <i className="bi bi-cart ms-1"></i>
                 </Button>
               </Link>

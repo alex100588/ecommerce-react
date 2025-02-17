@@ -52,7 +52,7 @@ const Cart = () => {
                 >
                   Delete
                 </Button>
-                <p className="text-white">{totalPrice ? pet.price : setTotalPrice(totalPrice + pet.price)}</p>
+                <p className="text-white">{totalPrice ? setTotalPrice(totalPrice + pet.price): pet.price } $</p>
               </div>
             </div>
           </div>
