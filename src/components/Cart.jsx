@@ -1,11 +1,26 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
-import { Button, Container, Image } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import CartProps from "./CartProps";
+import TotalCartPrice from "./TotalCartPrice";
 
 const Cart = () => {
   const { productsToCart, removeFromCart } = useContext(AppContext);
   let [counter, setCounter] = useState(1);
-  let [totalPrice, setTotalPrice] = useState(0)
+  let [totalPrice, setTotalPrice] = useState(0);
+  
+  
+  // let total = 0
+  // productsToCart.map(item=> {
+  //   const prices = item.price
+  //   total+=prices
+  //   console.log(total);
+  //   return total
+  // })
+  // setTotalPrice(total)
+
+  
+  
 
   const petsObj = () => {
     if (productsToCart.length === 0) {
@@ -22,39 +37,16 @@ const Cart = () => {
             key={pet.id}
             className="mb-2 d-flex border bg-secondary rounded p-2 "
           >
-            <Image
-              className="me-lg-2 border rounded cart-image"
-              width={180}
-              height={160}
-              src={`${process.env.PUBLIC_URL}/${pet.img}`}
-            ></Image>
-            <div className="w-100">
-              <ul className="list-group mb-3">
-                <li className="list-group-item list-group-item-primary">
-                  Your product: {pet.title}
-                </li>
-                <li className="list-group-item">Price: {pet.price}$</li>
-              </ul>
-              <div className="d-flex justify-content-between">
-                
-                {/* Counter */}
-                <i
-                  onClick={() => setCounter((counter + 1)) }
-                  className="bi bi-plus-circle text-white"
-                ></i>
-
-                <h5 className="text-white ">{counter}</h5>
-                <i onClick={() => setCounter((counter - 1))} className="bi bi-dash-lg text-white"></i>
-                <Button
-                  variant="danger"
-                  className="btn-sm"
-                  onClick={() => removeFromCart(pet.id)}
-                >
-                  Delete
-                </Button>
-                <p className="text-white">{totalPrice ? setTotalPrice(totalPrice + pet.price): pet.price } $</p>
-              </div>
-            </div>
+            <CartProps
+              title={pet.title}
+              img={pet.img}
+              price={pet.price}
+              id={pet.id}
+              removeFromCart={removeFromCart}
+              counter={counter}
+              setCounter={setCounter}
+            />
+            <TotalCartPrice total={pet.price} count={pet.total} />
           </div>
         );
       });

@@ -61,7 +61,7 @@ const AllProducts = () => {
     getAllProducts();
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   const addPetsToCart = (element) => {
     addToCart(element);
@@ -72,6 +72,8 @@ const AllProducts = () => {
         <Col xs={12} md={6} lg={3}>
           <Card className="mb-2">
             <Card.Img
+            width={50}
+            height={160}
               variant="top"
               className="image-style"
               src={`${process.env.PUBLIC_URL}/${img}`}
