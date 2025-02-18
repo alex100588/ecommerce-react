@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useMemo, useState } from "react";
 import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -10,7 +10,9 @@ const Pets = () => {
   const [hasError, setError] = useState(false)
   const{ addToCart, search } = useContext(AppContext)
   
-  const filterPetsBySearch = pets.filter(pet => pet.title.includes(search))
+  const filterPetsBySearch = useMemo (()=>{
+    return pets.filter(pet => pet.title.toLowerCase().includes(search))
+  },[pets, search]) 
 
   useEffect(() => {
     const fetchData = async () => {

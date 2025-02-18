@@ -11,9 +11,9 @@ const showlist = () => {
 };
 
 const Navbar = () => {
-  const { petsToCart, search, handleSearch } = useContext(AppContext);
+  const { productsToCart, search, handleSearch } = useContext(AppContext);
 
-  const totalPrice = petsToCart?.reduce((acc, pet) => {
+  const totalPrice = productsToCart?.reduce((acc, pet) => {
     acc += pet.price;
     return acc;
   }, 0);

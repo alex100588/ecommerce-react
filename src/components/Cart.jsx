@@ -3,20 +3,20 @@ import { AppContext } from "../context/AppContext";
 import { Button, Container, Image } from "react-bootstrap";
 
 const Cart = () => {
-  const { petsToCart, removeFromCart } = useContext(AppContext);
+  const { productsToCart, removeFromCart } = useContext(AppContext);
   let [counter, setCounter] = useState(1);
   let [totalPrice, setTotalPrice] = useState(0)
 
   const petsObj = () => {
-    if (petsToCart.length === 0) {
+    if (productsToCart.length === 0) {
       return (
         <div className="text-white">
           <h1 className="text-center">Your cart is empty</h1>
         </div>
       );
     } else {
-      // console.log(petsToCart);
-      return petsToCart.map((pet) => {
+      // console.log(productsToCart);
+      return productsToCart.map((pet) => {
         return (
           <div
             key={pet.id}
