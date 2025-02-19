@@ -22,13 +22,13 @@ export const AppProvider = ({ children }) => {
     setSearch(input)
   }
 
-  const AllProductsToCart = ()=>{
-
+  const updateCartCounter = (id, count)=>{
+    setProductsToCart((prevCart) => prevCart.map(item => item.id === id ? { ...item, count } : item));
   }
   
 
   return (
-    <AppContext.Provider value={{ productsToCart, addToCart, removeFromCart, handleSearch, search }}>
+    <AppContext.Provider value={{ productsToCart, addToCart, removeFromCart, handleSearch, search, updateCartCounter }}>
       {children}
     </AppContext.Provider>
   );

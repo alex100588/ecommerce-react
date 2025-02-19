@@ -1,6 +1,15 @@
-const TotalProductsPrices = () => {
+const TotalProductsPrices = ({totalPrice}) => {
     return ( 
-        <div>Total</div>
+        <p
+        style={{
+          color: "white",
+          width: "20%",
+          marginLeft: "1rem",
+          marginTop: "2rem",
+        }}
+      >
+        total: {totalPrice} $
+      </p>
      );
 }
  

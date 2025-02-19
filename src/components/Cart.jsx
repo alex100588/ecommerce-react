@@ -2,21 +2,18 @@ import { Fragment, useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { Container } from "react-bootstrap";
 import CartProps from "./CartProps";
-import TotalPriceItem from "./TotalPriceItem";
 import TotalProductsPrices from "./TotalProductsPrices";
 
 const Cart = () => {
-  const { productsToCart, removeFromCart } = useContext(AppContext);
-  let [counter, setCounter] = useState(1);
+  const { productsToCart, removeFromCart, updateCartCounter } =
+    useContext(AppContext);
 
-  // let total = 0
-  // productsToCart.map(item=> {
-  //   const prices = item.price
-  //   total+=prices
-  //   console.log(total);
-  //   return total
-  // })
-  // setTotalPrice(total)
+  const totalPrice = productsToCart?.reduce((acc, pet) => {
+    console.log(pet);
+
+    acc += pet.price * pet.count;
+    return acc;
+  }, 0);
 
   const petsObj = () => {
     if (productsToCart.length === 0) {
@@ -26,21 +23,20 @@ const Cart = () => {
         </div>
       );
     } else {
-      // console.log(productsToCart);
+      console.log(productsToCart);
       return productsToCart.map((pet) => {
         return (
           <Fragment key={pet.id}>
             <div className="mb-2 d-flex border bg-secondary rounded p-2 ">
               <CartProps
+                updateCartCounter={updateCartCounter}
+                count={pet.count}
                 title={pet.title}
                 img={pet.img}
                 price={pet.price}
                 id={pet.id}
                 removeFromCart={removeFromCart}
-                counter={counter}
-                setCounter={setCounter}
               />
-              <TotalPriceItem total={pet.price} count={pet.total} />
             </div>
           </Fragment>
         );
@@ -48,11 +44,12 @@ const Cart = () => {
     }
   };
 
-  return <Container className="cart-width">
-    {petsObj()}
-    <TotalProductsPrices />
-    <div style={{ color: "white" }}>Total: 0</div>
-    </Container>;
+  return (
+    <Container className="cart-width">
+      {petsObj()}
+      <TotalProductsPrices totalPrice={totalPrice} />
+    </Container>
+  );
 };
 
 export default Cart;

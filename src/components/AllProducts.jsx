@@ -83,7 +83,7 @@ const AllProducts = () => {
               <Card.Text className="h6">Price: {price}$</Card.Text>
               <Card.Text className="h6">Family: {family}</Card.Text>
               <Button variant="primary btn-sm me-2">
-                <NavLink to={`/pets/${id}`} className="nav-link">
+                <NavLink to={`/${id}`} className="nav-link">
                   See more
                 </NavLink>
               </Button>

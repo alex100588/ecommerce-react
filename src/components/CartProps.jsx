@@ -1,6 +1,19 @@
+import { useState } from "react";
 import { Button, Image } from "react-bootstrap";
 
-const CartProps = ({id, title, img, price, removeFromCart, counter, setCounter}) => {
+
+const CartProps = ({id, title, img, price, removeFromCart, count, updateCartCounter}) => {
+  const [counter, setCounter] = useState(count)
+  const handleIncrement = ()=>{
+    setCounter((prev)=> prev + 1 )
+    updateCartCounter(id, count+1)
+  }
+  const handleDecrement = ()=>{
+    if(count < 1) return 0
+    setCounter((prev)=> prev - 1 )
+    updateCartCounter(id, count-1)
+  }
+
     return ( 
         <>
             <Image
@@ -20,12 +33,12 @@ const CartProps = ({id, title, img, price, removeFromCart, counter, setCounter})
                 
                 {/* Counter */}
                 <i
-                  onClick={() => setCounter((counter + 1)) }
+                  onClick={() => handleIncrement() }
                   className="bi bi-plus-circle text-white"
                 ></i> 
 
                 <h5 className="text-white ">{counter}</h5>
-                <i onClick={() => setCounter((counter - 1))} className="bi bi-dash-lg text-white"></i>
+                <i onClick={() => handleDecrement()} className="bi bi-dash-lg text-white"></i>
                 <Button
                   variant="danger"
                   className="btn-sm"
@@ -34,6 +47,7 @@ const CartProps = ({id, title, img, price, removeFromCart, counter, setCounter})
                   Delete
                 </Button>
                 <p className="text-white"></p>
+                
               </div>
             </div>
             </>
