@@ -3,6 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { Container } from "react-bootstrap";
 import CartProps from "./CartProps";
 import TotalPriceItem from "./TotalPriceItem";
+import TotalProductsPrices from "./TotalProductsPrices";
 
 const Cart = () => {
   const { productsToCart, removeFromCart } = useContext(AppContext);
@@ -41,14 +42,17 @@ const Cart = () => {
               />
               <TotalPriceItem total={pet.price} count={pet.total} />
             </div>
-            <div style={{ color: "white" }}>Total: 0</div>
           </Fragment>
         );
       });
     }
   };
 
-  return <Container className="cart-width">{petsObj()}</Container>;
+  return <Container className="cart-width">
+    {petsObj()}
+    <TotalProductsPrices />
+    <div style={{ color: "white" }}>Total: 0</div>
+    </Container>;
 };
 
 export default Cart;
