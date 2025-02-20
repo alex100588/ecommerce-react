@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import TotalPriceItem from "./TotalPriceItem";
+import './CartProps.css';
 
 
 const CartProps = ({id, title, img, price, removeFromCart, count, updateCartCounter}) => {
@@ -46,7 +47,7 @@ const CartProps = ({id, title, img, price, removeFromCart, count, updateCartCoun
                 
                 <Button
                   variant="danger"
-                  className="btn btn-sm"
+                  className="btn btn-sm delete-design"
                   onClick={() => removeFromCart(id)}
                 >
                   Delete
