@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Button, Image } from "react-bootstrap";
+import TotalPriceItem from "./TotalPriceItem";
 
 
 const CartProps = ({id, title, img, price, removeFromCart, count, updateCartCounter}) => {
   const [counter, setCounter] = useState(count)
+
   const handleIncrement = ()=>{
     setCounter((prev)=> prev + 1 )
     updateCartCounter(id, count+1)
@@ -29,6 +31,7 @@ const CartProps = ({id, title, img, price, removeFromCart, count, updateCartCoun
                 </li>
                 <li className="list-group-item">Price: {price}$</li>
               </ul>
+              
               <div className="d-flex justify-content-between">
                 
                 {/* Counter */}
@@ -36,18 +39,22 @@ const CartProps = ({id, title, img, price, removeFromCart, count, updateCartCoun
                   onClick={() => handleIncrement() }
                   className="bi bi-plus-circle text-white"
                 ></i> 
+                
 
                 <h5 className="text-white ">{counter}</h5>
                 <i onClick={() => handleDecrement()} className="bi bi-dash-lg text-white"></i>
+                
                 <Button
                   variant="danger"
-                  className="btn-sm"
+                  className="btn btn-sm"
                   onClick={() => removeFromCart(id)}
                 >
                   Delete
                 </Button>
-                <p className="text-white"></p>
-                
+                <div className="text-white">
+                  <TotalPriceItem total={price} count={count} />
+                </div>
+              
               </div>
             </div>
             </>

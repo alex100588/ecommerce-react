@@ -41,7 +41,7 @@ const Pets = () => {
     return filterPetsBySearch.map(({ id, title, img, price, family }) => (
       <Fragment key={id}>
         <Col xs={12} md={6} lg={3}>
-          <Card className="mb-2">
+          <Card className="mb-3">
             <Card.Img
               variant="top"
               className="image-style"

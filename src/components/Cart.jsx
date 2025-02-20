@@ -3,6 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { Container } from "react-bootstrap";
 import CartProps from "./CartProps";
 import TotalProductsPrices from "./TotalProductsPrices";
+import TotalPriceItem from "./TotalPriceItem";
 
 const Cart = () => {
   const { productsToCart, removeFromCart, updateCartCounter } =
@@ -38,6 +39,7 @@ const Cart = () => {
                 removeFromCart={removeFromCart}
               />
             </div>
+            
           </Fragment>
         );
       });
