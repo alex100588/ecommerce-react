@@ -21,7 +21,7 @@ const AllProducts = () => {
         return response.data;
       } catch (error) {
         console.log(error);
-        // setError(true);
+        setError(true);
       }
     };
 

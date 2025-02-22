@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -9,11 +9,13 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { Link, useParams } from "react-router";
+import { AppContext } from "../context/AppContext";
 
 const SigleFoodProduct = () => {
     const params = useParams();
 
     const [pets, setPets] = useState(null);
+    const{ addToCart} = useContext(AppContext)
   
     useEffect(() => {
       const fetchData = async () => {
@@ -34,7 +36,11 @@ const SigleFoodProduct = () => {
       if (pets === null) {
         return <Spinner animation="grow" variant="primary" />;
       }
-      // console.log(pets.title);
+      
+      const addPetsToCart = (element) =>{
+        addToCart(element)
+      }
+      
   
       return (
         <Row className="align-images">
@@ -46,7 +52,8 @@ const SigleFoodProduct = () => {
               className="pt-3 rounded-top"
             />
             <div className=" mt-2 mb-2 d-flex">
-              <Button variant="success btn-sm ">
+              <Button onClick={()=>addPetsToCart(pets)
+            }  variant="success btn-sm ">
                 <NavLink to="">
                   Add to cart
                   <i className=" bi bi-cart ms-1"></i>

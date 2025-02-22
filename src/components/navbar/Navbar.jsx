@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
 import { useContext} from "react";
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../../context/AppContext";
 
 const showlist = () => {
   const li = document.querySelectorAll("li");

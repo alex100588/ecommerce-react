@@ -23,7 +23,7 @@ const SinglePetProduct = () => {
         const response = await axios.get(
           `http://localhost:3002/pets/${params.petsId}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setPets(response.data);
       } catch (error) {
         console.log(error);
@@ -36,10 +36,10 @@ const SinglePetProduct = () => {
     if (pets === null) {
       return <Spinner animation="grow" variant="primary" />;
     }
-    // console.log(pets.title);
     const addPetsToCart = (element) =>{
       addToCart(element)
     }
+    
 
     return (
       <Row className="align-images">
@@ -51,7 +51,8 @@ const SinglePetProduct = () => {
             className="pt-3 rounded-top"
           />
           <div className=" mt-2 mb-2 d-flex">
-            <Button onClick={({id, title, img, price, family})=>addPetsToCart({id, title, img, price, family})} variant="success btn-sm ">
+            <Button onClick={()=>addPetsToCart(pets)
+            } variant="success btn-sm ">
               <NavLink to="cart">
                 Add to cart
                 <i className=" bi bi-cart ms-1"></i>

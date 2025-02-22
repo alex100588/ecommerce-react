@@ -6,12 +6,11 @@ import TotalProductsPrices from "./TotalProductsPrices";
 import './Cart.css';
 
 const Cart = () => {
-  const { productsToCart, removeFromCart, updateCartCounter } =
-    useContext(AppContext);
+  const { productsToCart, removeFromCart, updateCartCounter } = useContext(AppContext);
+  
 
   const totalPrice = productsToCart?.reduce((acc, pet) => {
     console.log(pet);
-
     acc += pet.price * pet.count;
     return acc;
   }, 0);
@@ -24,7 +23,7 @@ const Cart = () => {
         </div>
       );
     } else {
-      console.log(productsToCart);
+      // console.log(productsToCart);
       return productsToCart.map((pet) => {
         return (
           <Fragment key={pet.id}>
