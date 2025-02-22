@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -9,11 +9,13 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { Link, useParams } from "react-router";
+import { AppContext } from "../context/AppContext";
 
 const SinglePetProduct = () => {
   const params = useParams();
 
   const [pets, setPets] = useState(null);
+  const{ addToCart} = useContext(AppContext)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +23,7 @@ const SinglePetProduct = () => {
         const response = await axios.get(
           `http://localhost:3002/pets/${params.petsId}`
         );
-        // console.log(response.data);
+        console.log(response.data);
         setPets(response.data);
       } catch (error) {
         console.log(error);
@@ -35,6 +37,9 @@ const SinglePetProduct = () => {
       return <Spinner animation="grow" variant="primary" />;
     }
     // console.log(pets.title);
+    const addPetsToCart = (element) =>{
+      addToCart(element)
+    }
 
     return (
       <Row className="align-images">
@@ -46,8 +51,8 @@ const SinglePetProduct = () => {
             className="pt-3 rounded-top"
           />
           <div className=" mt-2 mb-2 d-flex">
-            <Button variant="success btn-sm ">
-              <NavLink to="">
+            <Button onClick={({id, title, img, price, family})=>addPetsToCart({id, title, img, price, family})} variant="success btn-sm ">
+              <NavLink to="cart">
                 Add to cart
                 <i className=" bi bi-cart ms-1"></i>
               </NavLink>

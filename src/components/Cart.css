@@ -1,0 +1,8 @@
+@media screen and (max-width: 600px) {
+    .container{
+        flex-direction: column;
+    }
+    .font-design {
+        font-size: 0.8rem;
+    }
+}

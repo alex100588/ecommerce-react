@@ -38,7 +38,7 @@ const CartProps = ({id, title, img, price, removeFromCart, count, updateCartCoun
                 {/* Counter */}
                 <i
                   onClick={() => handleIncrement() }
-                  className="bi bi-plus-circle text-white"
+                  className="bi bi-plus-circle text-white ms-1"
                 ></i> 
                 
 

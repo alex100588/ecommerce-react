@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useMemo, useState } from "react";
 import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -8,9 +8,12 @@ import { AppContext } from "../context/AppContext";
 const Food = () => {
     const [pets, setPets] = useState([]);
     const [hasError, setError] = useState(false)
-    const{ addToCart } = useContext(AppContext)
+    const{ addToCart, search } = useContext(AppContext)
     
     // console.log(total);
+    const filterBySearch = useMemo(()=>{
+     return pets.filter(pet => pet.title.toLowerCase().includes(search))
+    }, [pets, search])
   
     useEffect(() => {
       const fetchData = async () => {
@@ -26,7 +29,7 @@ const Food = () => {
       fetchData();
     }, []);
   
-    if (pets === null) {
+    if (filterBySearch === null) {
       return <Spinner animation="grow" variant="primary" />;
     }
 
@@ -41,7 +44,7 @@ const Food = () => {
         
         
       }
-      return pets.map(({ id, title, img, price, product }) => (
+      return filterBySearch.map(({ id, title, img, price, product }) => (
         <Fragment key={id}>
           <Col xs={12} md={6} lg={3}>
             <Card className="mb-3">

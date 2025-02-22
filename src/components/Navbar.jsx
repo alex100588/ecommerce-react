@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { AppContext } from "../context/AppContext";
 
 const showlist = () => {
@@ -19,8 +19,7 @@ const Navbar = () => {
   }, 0);
 
   const setInputValue = (e)=>{
-    console.log(search);
-    
+    // console.log(search);
     handleSearch(e.target.value)
   }
 
@@ -37,7 +36,7 @@ const Navbar = () => {
         </div>
         <div className="d-flex justify-content-between">
           <ul className="navbar-nav align-items-center">
-            <Button onClick={showlist} className="d-lg-none">
+            <Button onClick={showlist} className="d-lg-none mt-1">
               <i className="bi bi-list ms-1"></i>
             </Button>
             <li className="nav-item ml-5 d-none d-lg-block ">

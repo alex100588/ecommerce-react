@@ -1,9 +1,9 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext} from "react";
 import { AppContext } from "../context/AppContext";
 import { Container } from "react-bootstrap";
 import CartProps from "./CartProps";
 import TotalProductsPrices from "./TotalProductsPrices";
-import TotalPriceItem from "./TotalPriceItem";
+import './Cart.css';
 
 const Cart = () => {
   const { productsToCart, removeFromCart, updateCartCounter } =
@@ -28,7 +28,7 @@ const Cart = () => {
       return productsToCart.map((pet) => {
         return (
           <Fragment key={pet.id}>
-            <div className="mb-2 d-flex border bg-secondary rounded p-2 ">
+            <div className="mb-2 d-flex border bg-secondary rounded p-2 font-design">
               <CartProps
                 updateCartCounter={updateCartCounter}
                 count={pet.count}
@@ -47,7 +47,7 @@ const Cart = () => {
   };
 
   return (
-    <Container className="cart-width">
+    <Container className="cart-width pb-5">
       {petsObj()}
       <TotalProductsPrices totalPrice={totalPrice} />
     </Container>
