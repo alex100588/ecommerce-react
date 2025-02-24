@@ -15,6 +15,8 @@ import SinglePetProduct from "./components/SinglePetProduct";
 import SigleFoodProduct from "./components/SingleFoodProduct";
 import AllProducts from "./components/AllProducts";
 import SingleAllProductsPage from "./components/SingleAllProductsPage";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

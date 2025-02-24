@@ -37,6 +37,10 @@
   width: 5.3rem;
 }
 
+.display-after-login{
+  display: none!important;
+}
+
 @media screen and (max-width: 1000px) {
   .navbar {
     padding-right: 3rem;
