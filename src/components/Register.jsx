@@ -11,7 +11,7 @@ const Register = () => {
   });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     localStorage.setItem("user", JSON.stringify(input));
     navigate("/");
   };
@@ -67,7 +67,7 @@ const Register = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" onSubmit={()=>navigate('/')}>
           Submit
         </button>
       </form>

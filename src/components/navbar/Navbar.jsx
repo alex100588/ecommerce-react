@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { Button, Form, InputGroup, Nav } from "react-bootstrap";
 import "./Navbar.css";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
 const showlist = () => {
+  // const navigate = useNavigate();
+
   const li = document.querySelectorAll("li");
   li.forEach((i) => i.classList.toggle("show-lists-small"));
   // console.log(li);
@@ -26,25 +29,11 @@ const Navbar = () => {
     handleSearch(e.target.value);
   };
 
-  // const showRegister = () => {
-  //   if (userName?.name !== true) {
-  //     console.log("aa");
-  //     return (
-  //       <>
-  //         <li className="nav-item ml-5 d-none d-lg-block">
-  //           <Link to="/login" className="nav-link">
-  //             Login
-  //           </Link>
-  //         </li>
-  //         <li className="nav-item ml-5 d-none d-lg-block">
-  //           <Link to="/register" className="nav-link">
-  //             Register
-  //           </Link>
-  //         </li>
-  //       </>
-  //     );
-  //   }
-  // };
+  const logOut = ()=>{
+     localStorage.clear(userName)
+    //  navigate('/')
+  }
+
 
   return (
     <Nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 d-flex justify-content-between">
@@ -105,6 +94,11 @@ const Navbar = () => {
                 <Button className="button-container btn-sm ms-1">
                   Cart ({totalPrice}$)
                   <i className="bi bi-cart ms-1"></i>
+                </Button>
+              </Link>
+              <Link to="/" className="ml-auto">
+                <Button onClick={()=>logOut()} className={` ${userName?.name ? ' button-container btn-sm btn-danger ms-1 ' : 'd-none'}  `}>
+                  Logout
                 </Button>
               </Link>
             </li>

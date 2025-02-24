@@ -10,7 +10,7 @@ const Cart = () => {
   
 
   const totalPrice = productsToCart?.reduce((acc, pet) => {
-    console.log(pet);
+    // console.log(pet);
     acc += pet.price * pet.count;
     return acc;
   }, 0);
