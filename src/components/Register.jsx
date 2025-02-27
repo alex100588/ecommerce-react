@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import './Register.css';
+import { AppContext } from "../context/AppContext";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { handleSetUsername } = useContext(AppContext);
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -11,8 +13,9 @@ const Register = () => {
   });
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     localStorage.setItem("user", JSON.stringify(input));
+    handleSetUsername(input.name)
     navigate("/");
   };
 

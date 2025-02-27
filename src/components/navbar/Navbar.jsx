@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
 const showlist = () => {
-  // const navigate = useNavigate();
+ 
 
   const li = document.querySelectorAll("li");
   li.forEach((i) => i.classList.toggle("show-lists-small"));
@@ -14,9 +14,10 @@ const showlist = () => {
 };
 
 const Navbar = () => {
-  const { productsToCart, search, handleSearch } = useContext(AppContext);
+  const navigate = useNavigate();
+  const { handleSetUsername, productsToCart, search, handleSearch } = useContext(AppContext);
   const userName = JSON.parse(localStorage.getItem("user"));
-  // console.log(userName);
+  console.log(userName);
   
 
   const totalPrice = productsToCart?.reduce((acc, pet) => {
@@ -30,8 +31,9 @@ const Navbar = () => {
   };
 
   const logOut = ()=>{
+    navigate('/')
      localStorage.clear(userName)
-    //  navigate('/')
+     handleSetUsername('')
   }
 
 
@@ -96,7 +98,7 @@ const Navbar = () => {
                   <i className="bi bi-cart ms-1"></i>
                 </Button>
               </Link>
-              <Link to="/" className="ml-auto">
+              <Link className="ml-auto">
                 <Button onClick={()=>logOut()} className={` ${userName?.name ? ' button-container btn-sm btn-danger ms-1 ' : 'd-none'}  `}>
                   Logout
                 </Button>

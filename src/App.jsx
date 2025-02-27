@@ -3,15 +3,29 @@ import Title from "./components/Title";
 import "./App.css";
 import { AppProvider } from "./context/AppContext";
 import Navbar from "./components/navbar/Navbar";
+import CheckoutForm from "./components/CheckoutForm";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import WelcomeUser from "./components/WelcomeUser";
+const stripePromise = loadStripe(
+  "pk_test_51NhuUkDgyDvcJYDc19okgF0IwCVx0hrUrwDGoF0OccqbgKBJLGCRDwzLF4EqeqfMlm8VD6DFxS7RYPTD6dTeAIzq00o499liZg"
+);
 
 function App() {
-  const userName = JSON.parse(localStorage.getItem("user"));
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: "pk_test_51NhuUkDgyDvcJYDc19okgF0IwCVx0hrUrwDGoF0OccqbgKBJLGCRDwzLF4EqeqfMlm8VD6DFxS7RYPTD6dTeAIzq00o499liZg",
+  };
+
   return (
     <>
       <AppProvider>
         <div className="bg">
           <Navbar />
-          <p className="text-white text-end me-5 h4">{userName?.name && `Welcome ${userName?.name}`}</p>
+         <WelcomeUser  />
+          <Elements stripe={stripePromise} options={options}>
+            <CheckoutForm />
+          </Elements>
           <Title />
           <Outlet />
         </div>

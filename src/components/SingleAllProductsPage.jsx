@@ -21,7 +21,7 @@ const SingleAllProductsPage = () => {
           const response = await axios.get(
             `http://localhost:3002/pets/${params.singleId}`
           );
-          console.log(response.data);
+          // console.log(response.data);
           setPets(response.data);
         } catch (error) {
           console.log(error);
@@ -33,7 +33,7 @@ const SingleAllProductsPage = () => {
           const response = await axios.get(
             `http://localhost:3002/accessories/${params.singleId}`
           );
-          console.log(response.data);
+          // console.log(response.data);
           setPets(response.data);
         } catch (error) {
           console.log(error);
@@ -45,18 +45,16 @@ const SingleAllProductsPage = () => {
           const response = await axios.get(
             `http://localhost:3002/food/${params.singleId}`
           );
-          console.log(response.data);
+          // console.log(response.data);
           setPets(response.data);
         } catch (error) {
           console.log(error);
         }
       };
       const getAllProducts = async () => {
-        await Promise.all([fetchData(), fetchData2(), fetchData3()]).then(([pets, accessories, food]) =>
-          
-          setPets([...pets, ...accessories, ...food])
-        );
-        console.log(pets)
+        await Promise.all([fetchData(), fetchData2(), fetchData3()])
+      
+        // console.log(pets)
       };
       getAllProducts();
     }, []);
