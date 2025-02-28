@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -9,9 +9,11 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { Link, useParams } from "react-router";
+import { AppContext } from "../context/AppContext";
 
 const SingleAllProductsPage = () => {
     const params = useParams();
+    const{ addToCart} = useContext(AppContext)
 
     const [pets, setPets] = useState({});
   
@@ -64,6 +66,10 @@ const SingleAllProductsPage = () => {
         return <Spinner animation="grow" variant="primary" />;
       }
       // console.log(pets.title);
+
+      const addPetsToCart = (element) =>{
+        addToCart(element)
+      }
   
       return (
         <Row className="align-images">

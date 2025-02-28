@@ -21,7 +21,8 @@ const Navbar = () => {
   
 
   const totalPrice = productsToCart?.reduce((acc, pet) => {
-    acc += pet.price;
+    // console.log(pet);
+    acc += pet.price * pet.count;
     return acc;
   }, 0);
 

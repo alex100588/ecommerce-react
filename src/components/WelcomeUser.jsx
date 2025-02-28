@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 
 const WelcomeUser = () => {
     const { userName } = useContext(AppContext);
-    console.log(userName);
+    // console.log(userName);
     
   return (
     <p className="text-white text-end me-5 h4">
