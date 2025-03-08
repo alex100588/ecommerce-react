@@ -57,7 +57,7 @@ const Navbar = () => {
           </InputGroup>
         </div>
         <div className="d-flex justify-content-between">
-          <ul className="navbar-nav align-items-center">
+          <ul className="navbar-nav align-items-center text-center">
             <Button onClick={showlist} className="d-lg-none mt-1">
               <i className="bi bi-list ms-1"></i>
             </Button>

@@ -17,7 +17,7 @@ const Pets = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3002/pets");
+        const response = await axios.get("https://server-json-vert.vercel.app/pets");
           // console.log(response.data);
         setPets(response.data);
       } catch (error) {
