@@ -21,7 +21,7 @@ const SigleFoodProduct = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:3002/food/${params.foodId}`
+            `https://server-json-vert.vercel.app/food/${params.foodId}`
           );
           // console.log(response.data);
           setPets(response.data);

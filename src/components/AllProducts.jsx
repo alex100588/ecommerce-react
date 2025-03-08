@@ -16,7 +16,7 @@ const AllProducts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3002/pets");
+        const response = await axios.get("https://server-json-vert.vercel.app/pets");
         // console.log(response.data);
         return response.data;
       } catch (error) {
@@ -27,7 +27,7 @@ const AllProducts = () => {
 
     const fetchData2 = async () => {
       try {
-        const response = await axios.get("http://localhost:3002/accessories");
+        const response = await axios.get("https://server-json-vert.vercel.app/accessories");
         // console.log(response.data);
         return response.data;
       } catch (error) {
@@ -41,7 +41,7 @@ const AllProducts = () => {
 
     const fetchData3 = async () => {
       try {
-        const response = await axios.get("http://localhost:3002/food");
+        const response = await axios.get("https://server-json-vert.vercel.app/food");
         // console.log(response.data);
         return response.data;
       } catch (error) {

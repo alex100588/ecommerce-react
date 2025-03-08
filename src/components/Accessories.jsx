@@ -19,7 +19,7 @@ const Accessories = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get("http://localhost:3002/accessories");
+          const response = await axios.get("https://server-json-vert.vercel.app/accessories");
             // console.log(response.data);
           setPets(response.data);
         } catch (error) {

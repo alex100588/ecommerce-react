@@ -21,7 +21,7 @@ const SingleAllProductsPage = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:3002/pets/${params.singleId}`
+            `https://server-json-vert.vercel.app/pets/${params.singleId}`
           );
           // console.log(response.data);
           setPets(response.data);
@@ -33,7 +33,7 @@ const SingleAllProductsPage = () => {
       const fetchData2 = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:3002/accessories/${params.singleId}`
+            `https://server-json-vert.vercel.app/accessories/${params.singleId}`
           );
           // console.log(response.data);
           setPets(response.data);
@@ -45,7 +45,7 @@ const SingleAllProductsPage = () => {
       const fetchData3 = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:3002/food/${params.singleId}`
+            `https://server-json-vert.vercel.app/food/${params.singleId}`
           );
           // console.log(response.data);
           setPets(response.data);
