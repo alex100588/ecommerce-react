@@ -81,7 +81,7 @@ const SingleAllProductsPage = () => {
               className="pt-3 rounded-top"
             />
             <div className=" mt-2 mb-2 d-flex">
-              <Button onClick={()=>addPetsToCart(pets.id)} variant="success btn-sm ">
+              <Button onClick={()=>addPetsToCart(pets)} variant="success btn-sm ">
                 <NavLink to="">
                   Add to cart
                   <i className=" bi bi-cart ms-1"></i>
