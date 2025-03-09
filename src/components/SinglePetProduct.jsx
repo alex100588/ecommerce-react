@@ -21,7 +21,7 @@ const SinglePetProduct = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `hhttps://server-json-vert.vercel.app/pets/${params.petsId}`
+          `https://server-json-vert.vercel.app/pets/${params.petsId}`
         );
         // console.log(response.data);
         setPets(response.data);
