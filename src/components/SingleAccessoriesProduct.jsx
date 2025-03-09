@@ -38,6 +38,8 @@ const SingleAccessoriesProduct = () => {
       }
 
       const addPetsToCart = (element) =>{
+        console.log(element);
+        
         addToCart(element)
       }
       
