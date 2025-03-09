@@ -51,7 +51,7 @@ const SinglePetProduct = () => {
             className="pt-3 rounded-top"
           />
           <div className=" mt-2 mb-2 d-flex">
-            <Button onClick={()=>addPetsToCart(pets)
+            <Button  onClick={()=>addPetsToCart(pets)
             } variant="success btn-sm ">
               <NavLink to="cart">
                 Add to cart
