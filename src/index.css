@@ -26,6 +26,11 @@ code {
   width: 63%;
 }
 
+.title{
+  height: 28rem;
+  border-radius: .3rem;
+}
+
 @media screen and (max-width: 1000px) {
   .cart-image {
     width: 37%;
@@ -34,6 +39,10 @@ code {
   .cart-width{
     width: 100%;
   }
+
+  .title{
+    height: 18rem;
+  }
 }
 @media screen and (max-width: 600px) {
   .cart-image {
@@ -41,4 +50,7 @@ code {
     height: auto;
   }
   
+  .title{
+    height: 9rem;
+  }
 }
